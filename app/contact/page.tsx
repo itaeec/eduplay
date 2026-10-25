@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 
-import { Blob, COLORS, display, Floater, PageHero, PrimaryButton, SecondaryButton, Section, SectionHeading, Shell } from "@/components/site-chrome";
+import { COLORS, display, PageHero, PrimaryButton, SecondaryButton, Section, SectionHeading, Shell } from "@/components/site-chrome";
 import { contact as c } from "@/lib/pages-content";
 import { links } from "@/lib/site-content";
 
@@ -19,8 +19,6 @@ export default function ContactPage() {
       <PageHero eyebrow={c.eyebrow} title={c.title} intro="Contact us via phone or email, or book a tour online. Family tours are always welcome." animal="kangaroo" />
 
       <Section bg={COLORS.cream} next={COLORS.sage}>
-        <Blob className="-right-40 top-0 size-[26rem] bg-[#f3b46b]/30" />
-        <Floater kind="kookaburra" className="right-[4%] bottom-[6%] w-28" distance={50} rotate={4} />
         <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr]">
           <div className="grid gap-5">
             {[
@@ -29,7 +27,7 @@ export default function ContactPage() {
               { icon: MapPin, label: "Address", value: c.address, href: `https://www.google.com/maps?q=${encodeURIComponent(c.mapQuery)}`, tint: "bg-[#efb8ad]" },
             ].map((item) => (
               <a key={item.label} href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" data-reveal className="ink-card flex min-w-0 items-center gap-5 rounded-3xl bg-[#fffdf8] p-6">
-                <span className={`flex size-12 shrink-0 items-center justify-center rounded-2xl border-2 border-[#1b1714] shadow-[3px_3px_0_#1b1714] ${item.tint}`}>
+                <span className={`flex size-12 shrink-0 items-center justify-center rounded-2xl border border-[#1b1714]/20 ${item.tint}`}>
                   <item.icon className="size-5" />
                 </span>
                 <span className="min-w-0">
@@ -59,7 +57,7 @@ export default function ContactPage() {
 
       <Section bg={COLORS.sage}>
         <div className="grid items-center gap-10 lg:grid-cols-2">
-          <div data-reveal data-lightbox={c.image} data-lightbox-alt="The Edu-Play sign and front fence on Railway St North" className="tape ink-card relative aspect-[4/3] -rotate-2 overflow-hidden rounded-[1.5rem] bg-white">
+          <div data-reveal data-lightbox={c.image} data-lightbox-alt="The Edu-Play sign and front fence on Railway St North" className="ink-card relative aspect-[4/3] -rotate-2 overflow-hidden rounded-[1.5rem] bg-white">
             <Image src={c.image} alt="The Edu-Play sign and front fence on Railway St North" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
           </div>
           <div className="flex flex-col gap-6">

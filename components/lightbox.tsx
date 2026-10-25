@@ -116,7 +116,7 @@ export function Lightbox() {
         type="button"
         onClick={close}
         aria-label="Close"
-        className="absolute right-4 top-4 flex size-11 items-center justify-center rounded-full border-2 border-[#1b1714] bg-[#fffdf8] shadow-[3px_3px_0_#1b1714] transition hover:-translate-y-0.5 sm:right-6 sm:top-6"
+        className="absolute right-4 top-4 flex size-11 items-center justify-center rounded-full border border-[#1b1714]/20 bg-[#fffdf8] transition hover:-translate-y-0.5 sm:right-6 sm:top-6"
       >
         <X className="size-5" />
       </button>
@@ -131,9 +131,9 @@ export function Lightbox() {
             if (e.currentTarget.src !== withBase(slide.src)) e.currentTarget.src = withBase(slide.src);
           }}
           alt={slide.alt}
-          className="max-h-[78vh] max-w-full rounded-2xl border-2 border-[#1b1714] bg-white object-contain shadow-[6px_6px_0_#1b1714] animate-[lightbox-in_0.25s_ease-out]"
+          className="max-h-[78vh] max-w-full rounded-2xl border border-[#1b1714]/20 bg-white object-contain animate-[lightbox-in_0.25s_ease-out]"
         />
-        <figcaption className="flex items-center gap-3 rounded-full border-2 border-[#1b1714] bg-[#fffdf8] px-4 py-1.5 text-sm font-bold shadow-[3px_3px_0_#1b1714]">
+        <figcaption className="flex items-center gap-3 rounded-full border border-[#1b1714]/20 bg-[#fffdf8] px-4 py-1.5 text-sm font-bold">
           {slide.alt && <span className="max-w-[60vw] truncate">{slide.alt}</span>}
           {many && <span className="opacity-60">{index + 1} / {slides.length}</span>}
         </figcaption>
@@ -148,7 +148,7 @@ export function Lightbox() {
               step(-1);
             }}
             aria-label="Previous photo"
-            className="absolute left-3 top-1/2 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border-2 border-[#1b1714] bg-[#fffdf8] shadow-[3px_3px_0_#1b1714] transition hover:-translate-y-[calc(50%+2px)] sm:left-6"
+            className="absolute left-3 top-1/2 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#1b1714]/20 bg-[#fffdf8] transition hover:-translate-y-[calc(50%+2px)] sm:left-6"
           >
             <ChevronLeft className="size-5" />
           </button>
@@ -159,7 +159,7 @@ export function Lightbox() {
               step(1);
             }}
             aria-label="Next photo"
-            className="absolute right-3 top-1/2 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border-2 border-[#1b1714] bg-[#fffdf8] shadow-[3px_3px_0_#1b1714] transition hover:-translate-y-[calc(50%+2px)] sm:right-6"
+            className="absolute right-3 top-1/2 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#1b1714]/20 bg-[#fffdf8] transition hover:-translate-y-[calc(50%+2px)] sm:right-6"
           >
             <ChevronRight className="size-5" />
           </button>

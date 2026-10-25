@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Blob, COLORS, display, Floater, PageHero, Section, Shell, TourBand } from "@/components/site-chrome";
+import { COLORS, display, PageHero, Section, Shell } from "@/components/site-chrome";
 import { formatDate, posts } from "@/lib/posts";
 
 export const metadata: Metadata = {
@@ -17,8 +17,6 @@ export default function NewsPage() {
       <PageHero eyebrow="News" title="From our centre" intro="Projects, excursions, resources and centre news from the Joeys and Kangaroos." animal="cockatoo" />
 
       <Section bg={COLORS.cream}>
-        <Blob className="-left-32 top-1/3 size-[28rem] bg-[#9ccbb5]/35" />
-        <Floater kind="dingo" className="right-[2%] top-[2%] w-44" distance={60} rotate={-3} />
 
         <Link href={`/news/${featured.slug}`} data-reveal className="ink-card group grid overflow-hidden rounded-[2rem] bg-[#fffdf8] lg:grid-cols-[1.2fr_1fr]">
           <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto">
@@ -50,7 +48,6 @@ export default function NewsPage() {
         </div>
       </Section>
 
-      <TourBand animal="bilby" />
     </Shell>
   );
 }

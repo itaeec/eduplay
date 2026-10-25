@@ -1,21 +1,22 @@
-import { ArrowRight, Check, MapPin } from "lucide-react";
+import { Check } from "lucide-react";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { Lightbox } from "@/components/lightbox";
+import { SiteFooter } from "@/components/site-footer";
 import { ScrollEffects } from "@/components/scroll-effects";
 import { WaveDivider } from "@/components/outback-scene";
 import { animalDataUri, type AnimalKind } from "@/components/ui/australian-animals";
 import { withBase } from "@/lib/base-path";
-import { footer, hero, links, nav } from "@/lib/site-content";
+import { links, nav } from "@/lib/site-content";
 
 export const display = "font-[family-name:var(--font-display)]";
 
 export const COLORS = {
   cream: "#fbf6ec",
   white: "#fffdf8",
-  sand: "#f4e4c8",
-  sage: "#dbe9de",
+  sand: "#f8efe1",
+  sage: "#e8f0ea",
 };
 
 const isExternal = (href: string) => /^https?:\/\//.test(href);
@@ -68,32 +69,6 @@ export function InkAnimal({
   );
 }
 
-/** Soft colour blob that drifts slower than its section for depth. */
-export function Blob({ className = "" }: { className?: string }) {
-  return <div aria-hidden="true" data-pin-bg className={`pointer-events-none absolute rounded-full blur-2xl ${className}`} />;
-}
-
-/** A decorative animal that floats past as the section scrolls. */
-export function Floater({
-  kind,
-  className = "",
-  flip = false,
-  distance = 70,
-  rotate = 4,
-}: {
-  kind: AnimalKind;
-  className?: string;
-  flip?: boolean;
-  distance?: number;
-  rotate?: number;
-}) {
-  return (
-    <div data-float={distance} data-rotate={rotate} className={`pointer-events-none absolute hidden md:block ${className}`}>
-      <InkAnimal kind={kind} flip={flip} className="w-full animate-bob" />
-    </div>
-  );
-}
-
 export function FacebookIcon({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
@@ -139,9 +114,9 @@ export function SmartLink({ href, className, children, ...rest }: { href: string
 }
 
 const primaryClass =
-  "inline-flex items-center gap-2 rounded-full border-2 border-[#1b1714] bg-[#3f6f5c] px-6 py-3 text-sm font-bold text-white shadow-[3px_3px_0_#1b1714] transition hover:-translate-y-0.5 hover:bg-[#335b4b] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3f6f5c]";
+  "inline-flex items-center gap-2 rounded-full border border-[#1b1714]/20 bg-[#3f6f5c] px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#335b4b] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3f6f5c]";
 const secondaryClass =
-  "inline-flex items-center gap-2 rounded-full border-2 border-[#1b1714] bg-[#fffdf8] px-6 py-3 text-sm font-bold shadow-[3px_3px_0_#1b1714] transition hover:-translate-y-0.5 hover:bg-[#9ccbb5]";
+  "inline-flex items-center gap-2 rounded-full border border-[#1b1714]/20 bg-[#fffdf8] px-6 py-3 text-sm font-bold transition hover:-translate-y-0.5 hover:bg-[#9ccbb5]";
 
 export function PrimaryButton({ href, children }: { href: string; children: ReactNode }) {
   return (
@@ -177,7 +152,7 @@ export function SiteHeader() {
             target="_blank"
             rel="noreferrer"
             aria-label="Edu-Play on Facebook"
-            className="flex size-9 items-center justify-center rounded-full border-2 border-[#1b1714] bg-[#fffdf8]/70 text-[#1b1714] transition hover:bg-[#1877f2] hover:text-white"
+            className="flex size-9 items-center justify-center rounded-full border border-[#1b1714]/20 bg-[#fffdf8]/70 text-[#1b1714] transition hover:bg-[#1877f2] hover:text-white"
           >
             <FacebookIcon className="size-4" />
           </a>
@@ -185,47 +160,13 @@ export function SiteHeader() {
             href={links.bookTour}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border-2 border-[#1b1714] bg-[#3f6f5c] px-4 py-2 text-sm font-bold text-white shadow-[3px_3px_0_#1b1714] transition hover:-translate-y-0.5 hover:bg-[#335b4b]"
+            className="rounded-full border border-[#1b1714]/20 bg-[#3f6f5c] px-4 py-2 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#335b4b]"
           >
             Book A Tour
           </a>
         </div>
       </div>
     </header>
-  );
-}
-
-export function SiteFooter() {
-  return (
-    <footer className="relative bg-[#1b1714] text-[#fbf6ec]">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-[1.4fr_1fr]">
-        <div className="flex flex-col gap-4">
-          <Logo variant="dark" />
-          <p className="max-w-xl text-sm leading-relaxed opacity-75">{footer.culturalSafety}</p>
-          <p className="flex items-center gap-1.5 text-sm opacity-90">
-            <MapPin className="size-4" /> {hero.address}
-          </p>
-          <a
-            href={links.facebook}
-            target="_blank"
-            rel="noreferrer"
-            className="flex w-fit items-center gap-2 text-sm font-semibold opacity-90 hover:opacity-100"
-          >
-            <FacebookIcon className="size-4" /> Follow us on Facebook
-          </a>
-        </div>
-        <ul className="flex flex-col gap-2 text-sm md:items-end">
-          {[...nav, ...footer.links].map((l) => (
-            <li key={l.label}>
-              <SmartLink href={l.href} className="opacity-75 hover:opacity-100">
-                {l.label}
-              </SmartLink>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="border-t border-white/10 py-5 text-center text-xs opacity-60">© Edu-Play Early Learning Centre, Altona</div>
-    </footer>
   );
 }
 
@@ -317,7 +258,7 @@ export function Checklist({ items, columns = 1 }: { items: string[]; columns?: 1
     <ul className={`grid gap-3 ${columns === 2 ? "sm:grid-cols-2" : ""}`}>
       {items.map((item) => (
         <li key={item} data-reveal className="flex gap-3 leading-relaxed">
-          <span className="mt-1 flex size-6 shrink-0 items-center justify-center rounded-full border-2 border-[#1b1714] bg-[#9ccbb5]">
+          <span className="mt-1 flex size-6 shrink-0 items-center justify-center rounded-full border border-[#1b1714]/20 bg-[#9ccbb5]">
             <Check className="size-3.5" strokeWidth={3} />
           </span>
           <span className="opacity-90">{item}</span>
@@ -343,7 +284,6 @@ export function IllustratedTile({
 }) {
   return (
     <div className={`relative flex flex-col items-center justify-center gap-3 overflow-hidden p-6 text-center ${tint} ${className}`}>
-      <div aria-hidden="true" className="absolute inset-0 opacity-15 [background-image:radial-gradient(#1b1714_1.5px,transparent_1.5px)] [background-size:18px_18px]" />
       <InkAnimal kind={animal} flip={flip} className="relative w-[55%] max-w-40 animate-bob" />
       {label && <span className={`${display} relative text-xl sm:text-2xl`}>{label}</span>}
     </div>
@@ -354,7 +294,6 @@ export function IllustratedTile({
 export function LogoTile({ caption, className = "" }: { caption?: string; className?: string }) {
   return (
     <div className={`relative flex flex-col items-center justify-center gap-4 overflow-hidden bg-[#fbf6ec] p-8 text-center ${className}`}>
-      <div aria-hidden="true" className="absolute inset-0 opacity-10 [background-image:radial-gradient(#1b1714_1.5px,transparent_1.5px)] [background-size:18px_18px]" />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={withBase("/images/logo.png")} alt="" className="relative w-[70%] max-w-xs" />
       {caption && <span className="relative text-xs font-bold uppercase tracking-[0.18em] text-[#3f6f5c]">{caption}</span>}
@@ -374,28 +313,3 @@ export function InkCard({ children, className = "", tint = "bg-[#fffdf8]" }: { c
   );
 }
 
-/** Closing call to action used on every inner page. */
-export function TourBand({ animal = "kangaroo" }: { animal?: AnimalKind }) {
-  return (
-    <section className="relative overflow-hidden" style={{ background: COLORS.sage }}>
-      <Blob className="-left-32 top-0 size-96 bg-[#fffdf8]/70" />
-      <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 py-20 text-center sm:px-6 lg:py-24">
-        <div data-float="30" data-rotate="3" className="w-28 sm:w-36">
-          <InkAnimal kind={animal} className="w-full animate-bob" />
-        </div>
-        <h2 data-reveal className={`${display} text-balance text-3xl sm:text-5xl`}>
-          Come and see the Edu-Play difference
-        </h2>
-        <p data-reveal className="max-w-xl opacity-80">
-          Family tours are always welcome. Visit our small and homely centre at {hero.address}.
-        </p>
-        <div data-reveal className="flex flex-wrap justify-center gap-3">
-          <PrimaryButton href={links.bookTour}>
-            Book A Tour <ArrowRight className="size-4" />
-          </PrimaryButton>
-          <SecondaryButton href="/contact">Contact Us</SecondaryButton>
-        </div>
-      </div>
-    </section>
-  );
-}

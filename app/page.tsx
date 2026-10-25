@@ -3,51 +3,14 @@ import { ArrowRight, HeartHandshake, House, MapPin, Quote, Sprout } from "lucide
 
 import { FacebookFeed } from "@/components/facebook-feed";
 import { ForegroundGrass, OutbackScene, WaveDivider } from "@/components/outback-scene";
-import {
-  Blob,
-  COLORS,
-  display,
-  FacebookIcon,
-  Floater,
-  IllustratedTile,
-  InkAnimal,
-  PrimaryButton,
-  SecondaryButton,
-  SectionHeading,
-  Shell,
-  SmartLink,
-  Wave,
-} from "@/components/site-chrome";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { animalDataUri, type AnimalKind } from "@/components/ui/australian-animals";
+import { COLORS, display, FacebookIcon, IllustratedTile, InkAnimal, PrimaryButton, SecondaryButton, SectionHeading, Shell, SmartLink, Wave } from "@/components/site-chrome";
+
 import { MurmurationWordmark } from "@/components/ui/murmuration-wordmark";
 import { CrowdCanvas } from "@/components/ui/skiper39";
 import { homePosts as posts } from "@/lib/posts";
-import {
-  centreImages,
-  differences,
-  excursions,
-  faqs,
-  hero,
-  links,
-  lookAround,
-  programs,
-  rooms,
-  testimonials,
-} from "@/lib/site-content";
+import { centreImages, differences, excursions, hero, links, lookAround, programs, rooms, testimonials } from "@/lib/site-content";
 
 const differenceIcons = [House, Sprout, HeartHandshake];
-
-const marqueeItems: { text: string; animal: AnimalKind }[] = [
-  { text: "Small & Homely", animal: "wombat" },
-  { text: "City Farm Kinder", animal: "kookaburra" },
-  { text: "Beach Kinder", animal: "platypus" },
-  { text: "Bush Kinder", animal: "koala" },
-  { text: "Locally Owned", animal: "kangaroo" },
-  { text: "Joeys & Kangaroos Rooms", animal: "echidna" },
-  { text: "Long-Term Educators", animal: "cockatoo" },
-  { text: "Altona VIC 3018", animal: "bilby" },
-];
 
 export default function Home() {
   const { cream: CREAM, white: WHITE, sand: SAND, sage: SAGE } = COLORS;
@@ -72,37 +35,15 @@ export default function Home() {
           </p>
         </div>
         <div data-speed="0.85" className="relative mt-4 min-h-[300px] flex-1">
-          <CrowdCanvas className="h-full" count={20} depthRange={200} parallax={0.18} />
+          <CrowdCanvas className="h-full" count={12} depthRange={150} parallax={0.18} />
         </div>
         <ForegroundGrass />
       </section>
 
-      {/* Marquee */}
-      <div className="relative z-10 overflow-hidden border-y-2 border-[#1b1714] bg-[#9ccbb5] py-3">
-        <div className="flex w-max animate-marquee items-center">
-          {[0, 1].map((copy) => (
-            <ul key={copy} aria-hidden={copy === 1} className="flex items-center">
-              {marqueeItems.map((item) => (
-                <li key={item.text} className="flex items-center gap-4 px-6">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={animalDataUri(item.animal)} alt="" className="h-9 w-auto" />
-                  <span className={`${display} whitespace-nowrap text-xl text-[#1b1714]`}>{item.text}</span>
-                </li>
-              ))}
-            </ul>
-          ))}
-        </div>
-      </div>
-
       {/* Enrolments */}
       <section className="relative overflow-hidden" style={{ background: CREAM }}>
-        <Blob className="-left-32 top-10 size-[28rem] bg-[#f3b46b]/30" />
-        <Blob className="-right-40 bottom-0 size-[32rem] bg-[#9ccbb5]/35" />
-        <Floater kind="kangaroo" className="left-[4%] top-[18%] w-36 lg:left-[8%] lg:w-44" distance={90} rotate={-5} />
-        <Floater kind="kookaburra" flip className="right-[5%] top-[14%] w-24 lg:right-[10%] lg:w-28" distance={60} rotate={6} />
-        <Floater kind="echidna" className="bottom-[10%] right-[14%] w-28" distance={40} rotate={-3} />
         <div className="relative mx-auto flex max-w-4xl flex-col items-center px-4 py-24 text-center sm:px-6 lg:py-32">
-          <span data-reveal className="rounded-full border-2 border-[#1b1714] bg-[#f3b46b] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#1b1714] shadow-[3px_3px_0_#1b1714]">
+          <span data-reveal className="rounded-full border border-[#1b1714]/20 bg-[#f3b46b] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#1b1714]">
             Enrolling now
           </span>
           <h2 data-reveal className={`${display} mt-8 text-balance text-4xl leading-[1.05] sm:text-6xl`}>
@@ -127,14 +68,9 @@ export default function Home() {
 
       {/* The Edu-Play Difference */}
       <section className="relative overflow-hidden" style={{ background: WHITE }}>
-        <Blob className="-left-24 bottom-10 size-96 bg-[#9ccbb5]/30" />
-        <Floater kind="cockatoo" className="right-[3%] top-[8%] w-24" distance={80} rotate={5} />
         <div className="relative mx-auto grid max-w-6xl gap-14 px-4 pb-24 pt-12 sm:px-6 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:pb-32 lg:pt-16">
           <div className="relative">
-            <div data-float="30" data-rotate="2" className="absolute -right-6 -top-16 z-10 w-28 sm:w-32">
-              <InkAnimal kind="koala" className="w-full animate-bob" />
-            </div>
-            <div data-reveal data-lightbox={centreImages.storytime.src} data-lightbox-alt={centreImages.storytime.alt} className="tape ink-card relative aspect-[4/3] -rotate-2 overflow-hidden rounded-[1.5rem] bg-white">
+            <div data-reveal data-lightbox={centreImages.storytime.src} data-lightbox-alt={centreImages.storytime.alt} className="ink-card relative aspect-[4/3] -rotate-2 overflow-hidden rounded-[1.5rem] bg-white">
               <Image
                 src={centreImages.storytime.src}
                 alt={centreImages.storytime.alt}
@@ -153,7 +89,7 @@ export default function Home() {
                 const tints = ["bg-[#f3b46b]", "bg-[#9ccbb5]", "bg-[#efb8ad]"];
                 return (
                   <li key={d.title} data-reveal className="flex gap-4">
-                    <span className={`flex size-12 shrink-0 items-center justify-center rounded-2xl border-2 border-[#1b1714] shadow-[3px_3px_0_#1b1714] ${tints[i]}`}>
+                    <span className={`flex size-12 shrink-0 items-center justify-center rounded-2xl border border-[#1b1714]/20 ${tints[i]}`}>
                       <Icon className="size-5 text-[#1b1714]" />
                     </span>
                     <div>
@@ -169,7 +105,7 @@ export default function Home() {
                 <SmartLink
                   key={p.label}
                   href={p.href}
-                  className="rounded-full border-2 border-[#1b1714] bg-[#fffdf8] px-4 py-1.5 text-sm font-bold transition hover:-translate-y-0.5 hover:bg-[#9ccbb5]"
+                  className="rounded-full border border-[#1b1714]/20 bg-[#fffdf8] px-4 py-1.5 text-sm font-bold transition hover:-translate-y-0.5 hover:bg-[#9ccbb5]"
                 >
                   {p.label}
                 </SmartLink>
@@ -182,8 +118,6 @@ export default function Home() {
 
       {/* Rooms */}
       <section id="rooms" className="relative overflow-hidden scroll-mt-8" style={{ background: SAND }}>
-        <Blob className="-right-24 top-0 size-80 bg-[#f3b46b]/40" />
-        <Floater kind="bilby" className="left-[3%] bottom-[12%] w-32" distance={50} rotate={-4} />
         <div className="relative mx-auto max-w-6xl px-4 pb-24 pt-10 sm:px-6 lg:pb-32">
           <SectionHeading eyebrow="Our Rooms" title="Two rooms, one small & homely centre" center />
           <div className="mt-14 grid gap-8 md:grid-cols-2">
@@ -191,7 +125,7 @@ export default function Home() {
               const joey = room.name === "Joeys";
               return (
                 <article key={room.name} data-reveal data-lightbox-group className="ink-card group relative flex flex-col overflow-hidden rounded-[2rem] bg-[#fffdf8]">
-                  <div data-lightbox={room.cover} data-lightbox-alt={room.coverAlt} className="relative aspect-[16/10] overflow-hidden border-b-2 border-[#1b1714]">
+                  <div data-lightbox={room.cover} data-lightbox-alt={room.coverAlt} className="relative aspect-[16/10] overflow-hidden border-b border-[#1b1714]/10">
                     <Image
                       src={room.cover}
                       alt={room.coverAlt}
@@ -208,23 +142,19 @@ export default function Home() {
                       <InkAnimal kind="kangaroo" flip={!joey} className="w-full" />
                     </div>
                   </div>
-                  <div className={`relative flex flex-col gap-4 p-7 ${joey ? "bg-[#f3b46b]" : "bg-[#9ccbb5]"}`}>
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-0 opacity-20 [background-image:radial-gradient(#1b1714_1.5px,transparent_1.5px)] [background-size:18px_18px]"
-                    />
+                  <div className={`relative flex flex-col gap-4 p-7 ${joey ? "bg-[#fbe3c4]" : "bg-[#d9eadf]"}`}>
                     <div className="relative flex flex-wrap items-end justify-between gap-3">
                       <div>
                         <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#1b1714]/70">Room {room.number}</span>
                         <h3 className={`${display} mt-1 text-5xl sm:text-6xl`}>{room.name}</h3>
                       </div>
-                      <p className="inline-flex rounded-full border-2 border-[#1b1714] bg-[#fffdf8] px-4 py-1.5 text-sm font-bold shadow-[3px_3px_0_#1b1714]">
+                      <p className="inline-flex rounded-full border border-[#1b1714]/20 bg-[#fffdf8] px-4 py-1.5 text-sm font-bold">
                         {room.ages}
                       </p>
                     </div>
                     <ul className="relative grid grid-cols-4 gap-2">
                       {room.photos.map((photo, i) => (
-                        <li key={photo.src} data-lightbox={photo.src} data-lightbox-alt={photo.alt} className={`relative aspect-square overflow-hidden rounded-xl border-2 border-[#1b1714] bg-white ${["-rotate-2", "rotate-1", "-rotate-1", "rotate-2"][i]}`}>
+                        <li key={photo.src} data-lightbox={photo.src} data-lightbox-alt={photo.alt} className={`relative aspect-square overflow-hidden rounded-xl border border-[#1b1714]/20 bg-white ${["-rotate-2", "rotate-1", "-rotate-1", "rotate-2"][i]}`}>
                           <Image src={photo.src} alt={photo.alt} fill sizes="12vw" className="object-cover transition duration-500 hover:scale-110" />
                         </li>
                       ))}
@@ -240,8 +170,6 @@ export default function Home() {
 
       {/* Look around */}
       <section className="relative overflow-hidden" style={{ background: WHITE }}>
-        <Blob className="-right-40 top-1/4 size-[28rem] bg-[#9ccbb5]/30" />
-        <Floater kind="wombat" className="left-[2%] bottom-[6%] w-32" distance={40} rotate={-3} />
         <div className="relative mx-auto max-w-6xl px-4 pb-24 pt-10 sm:px-6 lg:pb-32">
           <SectionHeading eyebrow={lookAround.eyebrow} title={lookAround.heading} center />
           <div data-lightbox-group className="mt-14 grid grid-cols-2 gap-5 sm:gap-7 md:grid-cols-3">
@@ -251,12 +179,12 @@ export default function Home() {
                 data-reveal
                 data-lightbox={photo.src}
                 data-lightbox-alt={photo.caption}
-                className={`tape ink-card relative overflow-hidden rounded-2xl bg-white ${["-rotate-2", "rotate-1", "-rotate-1", "rotate-2", "-rotate-1", "rotate-1"][i]} ${i === 0 ? "col-span-2 md:col-span-1" : ""}`}
+                className={`ink-card relative overflow-hidden rounded-2xl bg-white ${["-rotate-2", "rotate-1", "-rotate-1", "rotate-2", "-rotate-1", "rotate-1"][i]} ${i === 0 ? "col-span-2 md:col-span-1" : ""}`}
               >
                 <div className="relative aspect-[4/3]">
                   <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 768px) 33vw, 50vw" className="object-cover transition duration-700 hover:scale-105" />
                 </div>
-                <figcaption className={`${display} border-t-2 border-[#1b1714] bg-[#fffdf8] px-4 py-2.5 text-center text-lg`}>{photo.caption}</figcaption>
+                <figcaption className={`${display} border-t border-[#1b1714]/10 bg-[#fffdf8] px-4 py-2.5 text-center text-lg`}>{photo.caption}</figcaption>
               </figure>
             ))}
           </div>
@@ -266,13 +194,10 @@ export default function Home() {
 
       {/* Excursions */}
       <section className="relative overflow-hidden" style={{ background: CREAM }}>
-        <Blob className="-left-40 top-1/3 size-[30rem] bg-[#9ccbb5]/30" />
-        <Floater kind="platypus" className="left-[2%] top-[10%] w-36" distance={70} rotate={-6} />
-        <Floater kind="goanna" flip className="right-[2%] bottom-[8%] w-44" distance={50} rotate={3} />
         <div className="relative mx-auto max-w-6xl px-4 pb-24 pt-10 sm:px-6 lg:pb-32">
           <SectionHeading eyebrow={excursions.eyebrow} title={excursions.heading} center />
           <div data-lightbox-group className="mt-16 grid grid-cols-2 gap-5 sm:gap-7 lg:grid-cols-4 lg:grid-rows-2">
-            <div data-reveal data-lightbox={excursions.photo.src} data-lightbox-alt={excursions.photo.alt} className="tape ink-card relative col-span-2 aspect-[4/3] -rotate-2 overflow-hidden rounded-2xl bg-white lg:row-span-2 lg:aspect-auto">
+            <div data-reveal data-lightbox={excursions.photo.src} data-lightbox-alt={excursions.photo.alt} className="ink-card relative col-span-2 aspect-[4/3] -rotate-2 overflow-hidden rounded-2xl bg-white lg:row-span-2 lg:aspect-auto">
               <Image
                 src={excursions.photo.src}
                 alt={excursions.photo.alt}
@@ -284,9 +209,9 @@ export default function Home() {
             </div>
             {excursions.tiles.map((tile, i) =>
               "photo" in tile ? (
-                <div key={tile.label} data-reveal data-lightbox={tile.photo} data-lightbox-alt={tile.alt} className={`tape ink-card relative aspect-square overflow-hidden rounded-2xl bg-white ${["rotate-2", "-rotate-1", "rotate-3", "-rotate-2"][i]}`}>
+                <div key={tile.label} data-reveal data-lightbox={tile.photo} data-lightbox-alt={tile.alt} className={`ink-card relative aspect-square overflow-hidden rounded-2xl bg-white ${["rotate-2", "-rotate-1", "rotate-3", "-rotate-2"][i]}`}>
                   <Image src={tile.photo} alt={tile.alt} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover" />
-                  <span className={`${display} absolute inset-x-3 bottom-3 rounded-full border-2 border-[#1b1714] bg-[#fffdf8] px-3 py-1 text-center text-base shadow-[2px_2px_0_#1b1714]`}>{tile.label}</span>
+                  <span className={`${display} absolute inset-x-3 bottom-3 rounded-full border border-[#1b1714]/20 bg-[#fffdf8] px-3 py-1 text-center text-base`}>{tile.label}</span>
                 </div>
               ) : (
                 <IllustratedTile
@@ -295,7 +220,7 @@ export default function Home() {
                   label={tile.label}
                   tint={tile.tint}
                   flip={i % 2 === 1}
-                  className={`tape ink-card aspect-square rounded-2xl ${["rotate-2", "-rotate-1", "rotate-3", "-rotate-2"][i]}`}
+                  className={`ink-card aspect-square rounded-2xl ${["rotate-2", "-rotate-1", "rotate-3", "-rotate-2"][i]}`}
                 />
               ),
             )}
@@ -306,10 +231,6 @@ export default function Home() {
 
       {/* Testimonials */}
       <section className="relative overflow-hidden" style={{ background: SAGE }}>
-        <Blob className="right-0 top-10 size-96 bg-[#fffdf8]/70" />
-        <Floater kind="kookaburra" className="left-[4%] top-[10%] w-28 lg:left-[8%]" distance={60} rotate={-5} />
-        <Floater kind="cockatoo" flip className="right-[4%] top-[8%] w-24 lg:right-[9%]" distance={80} rotate={6} />
-        <Floater kind="devil" className="bottom-[6%] left-[12%] w-32" distance={30} rotate={2} />
         <div className="relative mx-auto max-w-6xl px-4 pb-24 pt-10 sm:px-6 lg:pb-32">
           <SectionHeading eyebrow="Community Testimonials" title="What our families say" center />
           <div className="mt-14 grid gap-7 md:grid-cols-3">
@@ -321,7 +242,7 @@ export default function Home() {
                   data-reveal
                   className="ink-card flex flex-col overflow-hidden rounded-3xl bg-[#fffdf8]"
                 >
-                  <div className={`flex items-center justify-between border-b-2 border-[#1b1714] px-6 py-3 ${tops[i]}`}>
+                  <div className={`flex items-center justify-between border-b border-[#1b1714]/10 px-6 py-3 ${tops[i]}`}>
                     <Quote className="size-5 text-[#1b1714]" />
                     <span className="text-xs font-bold uppercase tracking-[0.16em]">Family</span>
                   </div>
@@ -338,46 +259,12 @@ export default function Home() {
         <WaveDivider fill={WHITE} />
       </section>
 
-      {/* FAQs */}
-      <section className="relative overflow-hidden" style={{ background: WHITE }}>
-        <Blob className="-right-32 bottom-0 size-96 bg-[#f3b46b]/25" />
-        <div className="relative mx-auto grid max-w-6xl gap-12 px-4 pb-24 pt-10 sm:px-6 lg:grid-cols-[1fr_1.6fr] lg:pb-32">
-          <div className="flex flex-col gap-6">
-            <SectionHeading eyebrow="FAQs" title="Questions families ask" />
-            <div data-float="40" data-rotate="-3" className="hidden w-44 lg:block">
-              <InkAnimal kind="wombat" className="w-full animate-bob" />
-            </div>
-            <p className="opacity-80">
-              Can&apos;t find what you&apos;re looking for?{" "}
-              <SmartLink href={links.contact} className="font-bold text-[#3f6f5c] underline underline-offset-4">
-                Get in touch
-              </SmartLink>
-              .
-            </p>
-          </div>
-          <Accordion data-reveal className="ink-card rounded-3xl bg-[#fbf6ec] px-6 py-2 sm:px-8">
-            {faqs.map((f) => (
-              <AccordionItem key={f.q} value={f.q} className="border-b-2 border-dashed border-[#1b1714]/20 last:border-0">
-                <AccordionTrigger className={`${display} py-5 text-lg hover:no-underline sm:text-xl`}>
-                  {f.q}
-                </AccordionTrigger>
-                <AccordionContent className="pb-5 text-base leading-relaxed opacity-80">
-                  {f.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-        <WaveDivider fill={CREAM} />
-      </section>
-
       {/* News */}
       <section className="relative overflow-hidden" style={{ background: CREAM }}>
-        <Floater kind="dingo" className="right-[2%] bottom-[4%] w-44" distance={70} rotate={-3} />
         <div className="relative mx-auto max-w-6xl px-4 pb-24 pt-10 sm:px-6 lg:pb-32">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading eyebrow="News" title="From our blog" />
-            <SmartLink href={links.news} className="flex items-center gap-1.5 rounded-full border-2 border-[#1b1714] bg-[#fffdf8] px-4 py-2 text-sm font-bold shadow-[3px_3px_0_#1b1714] transition hover:-translate-y-0.5">
+            <SmartLink href={links.news} className="flex items-center gap-1.5 rounded-full border border-[#1b1714]/20 bg-[#fffdf8] px-4 py-2 text-sm font-bold transition hover:-translate-y-0.5">
               All articles <ArrowRight className="size-4" />
             </SmartLink>
           </div>
@@ -410,7 +297,6 @@ export default function Home() {
 
       {/* Facebook */}
       <section id="facebook" className="relative overflow-hidden" style={{ background: SAGE }}>
-        <Blob className="-left-32 top-10 size-96 bg-[#fffdf8]/70" />
         <div className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-24 pt-10 sm:px-6 lg:pb-32">
           <div className="flex flex-col gap-6">
             <SectionHeading eyebrow="Facebook" title="Latest from our centre" />
@@ -422,25 +308,12 @@ export default function Home() {
               <PrimaryButton href={links.facebook}>
                 <FacebookIcon className="size-4" /> Follow us on Facebook
               </PrimaryButton>
-              <div data-float="30" data-rotate="4" className="w-24">
-                <InkAnimal kind="kookaburra" className="w-full animate-bob" />
-              </div>
             </div>
           </div>
           <FacebookFeed />
         </div>
       </section>
 
-      <div className="relative h-28 bg-gradient-to-b from-[#dbe9de] to-[#f1dcbc] sm:h-32">
-        <CrowdCanvas
-          className="h-full"
-          animals={["wombat", "echidna", "platypus", "bilby", "goanna", "devil"]}
-          count={7}
-          scale={0.85}
-          depthRange={30}
-          speed={0.9}
-        />
-      </div>
     </Shell>
   );
 }

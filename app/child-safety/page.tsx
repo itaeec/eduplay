@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ExternalLink } from "lucide-react";
 
-import { Blob, Checklist, COLORS, display, Floater, PageHero, PrimaryButton, Prose, Section, SectionHeading, Shell } from "@/components/site-chrome";
+import { Checklist, COLORS, display, PageHero, PrimaryButton, Prose, Section, SectionHeading, Shell } from "@/components/site-chrome";
 import { childSafety as c } from "@/lib/pages-content";
 
 export const metadata: Metadata = {
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Our commitment to child safety and wellbeing, and how we support Victoria's Child Safe Standards.",
 };
 
-const tints = ["bg-[#f3b46b]", "bg-[#9ccbb5]", "bg-[#efb8ad]", "bg-[#9ab9c9]"];
+const tints = ["bg-[#fbe3c4]", "bg-[#d9eadf]", "bg-[#f8dcd5]", "bg-[#d8e5ec]"];
 
 export default function ChildSafetyPage() {
   return (
@@ -17,7 +17,6 @@ export default function ChildSafetyPage() {
       <PageHero eyebrow={c.eyebrow} title={c.title} animal="koala" />
 
       <Section bg={COLORS.cream} next={COLORS.white}>
-        <Blob className="-left-40 top-10 size-[26rem] bg-[#9ccbb5]/35" />
         <blockquote data-reveal className="ink-card relative mx-auto max-w-4xl rounded-[2rem] bg-[#fffdf8] p-8 text-lg leading-relaxed sm:p-12 sm:text-xl">
           <span className={`${display} absolute -top-6 left-8 text-7xl text-[#9ccbb5]`}>“</span>
           {c.statement}
@@ -25,7 +24,6 @@ export default function ChildSafetyPage() {
       </Section>
 
       <Section bg={COLORS.white} next={COLORS.sand}>
-        <Floater kind="kangaroo" className="right-[2%] top-[2%] w-36" distance={70} rotate={-4} />
         <SectionHeading eyebrow="Victoria's 11 Child Safe Standards" title="Supporting the Child Safe Standards" />
         <Prose className="mt-6 max-w-3xl">
           <p>{c.standardsIntro}</p>
@@ -33,7 +31,7 @@ export default function ChildSafetyPage() {
         <ol className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {c.standards.map((s, i) => (
             <li key={s.n} data-reveal className="ink-card flex flex-col gap-3 rounded-3xl bg-[#fffdf8] p-6">
-              <span className={`${display} flex size-10 items-center justify-center rounded-full border-2 border-[#1b1714] text-lg shadow-[2px_2px_0_#1b1714] ${tints[i % 4]}`}>{s.n}</span>
+              <span className={`${display} flex size-10 items-center justify-center rounded-full border border-[#1b1714]/20 text-lg ${tints[i % 4]}`}>{s.n}</span>
               <h3 className={`${display} text-xl leading-snug`}>{s.title}</h3>
               <p className="text-sm leading-relaxed opacity-85">{s.body}</p>
             </li>
@@ -42,7 +40,6 @@ export default function ChildSafetyPage() {
       </Section>
 
       <Section bg={COLORS.sand}>
-        <Blob className="-right-32 bottom-0 size-96 bg-[#f3b46b]/30" />
         <div className="grid items-start gap-12 lg:grid-cols-2">
           <div className="flex flex-col gap-6">
             <SectionHeading eyebrow="Oversight" title={c.reportable.title} />

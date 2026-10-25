@@ -16,7 +16,7 @@ export interface FacebookPost {
 }
 
 const display = "font-[family-name:var(--font-display)]";
-const tints = ["bg-[#f3b46b]", "bg-[#9ccbb5]", "bg-[#efb8ad]", "bg-[#9ab9c9]"];
+const tints = ["bg-[#fbe3c4]", "bg-[#d9eadf]", "bg-[#f8dcd5]", "bg-[#d8e5ec]"];
 
 type State = { status: "loading" } | { status: "ready"; posts: FacebookPost[] } | { status: "empty" };
 
@@ -68,7 +68,7 @@ export function FacebookFeed({ limit = 6 }: { limit?: number }) {
           href={links.facebook}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border-2 border-[#1b1714] bg-[#1877f2] px-6 py-3 text-sm font-bold text-white shadow-[3px_3px_0_#1b1714] transition hover:-translate-y-0.5"
+          className="inline-flex items-center gap-2 rounded-full border border-[#1b1714]/20 bg-[#1877f2] px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5"
         >
           <FacebookIcon className="size-4" /> Visit our Facebook page
         </a>
@@ -87,12 +87,12 @@ export function FacebookFeed({ limit = 6 }: { limit?: number }) {
           className="ink-card group flex flex-col overflow-hidden rounded-3xl bg-[#fffdf8]"
         >
           {post.picture ? (
-            <div className="relative aspect-[4/3] overflow-hidden border-b-2 border-[#1b1714]">
+            <div className="relative aspect-[4/3] overflow-hidden border-b border-[#1b1714]/10">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={post.picture} alt="" className="size-full object-cover transition duration-700 group-hover:scale-105" />
             </div>
           ) : (
-            <div className={`flex items-center gap-2 border-b-2 border-[#1b1714] px-5 py-3 ${tints[i % 4]}`}>
+            <div className={`flex items-center gap-2 border-b border-[#1b1714]/10 px-5 py-3 ${tints[i % 4]}`}>
               <FacebookIcon className="size-4" />
               <span className="text-xs font-bold uppercase tracking-[0.16em]">Facebook</span>
             </div>

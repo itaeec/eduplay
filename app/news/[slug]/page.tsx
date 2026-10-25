@@ -5,7 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
-import { Blob, COLORS, display, Floater, Section, Shell, TourBand } from "@/components/site-chrome";
+import { COLORS, display, Section, Shell } from "@/components/site-chrome";
 import { BASE_PATH } from "@/lib/base-path";
 import { formatDate, getPost, posts } from "@/lib/posts";
 
@@ -37,8 +37,6 @@ async function PostBody({ params }: { params: Promise<{ slug: string }> }) {
   return (
     <Shell>
       <section className="relative overflow-hidden bg-[linear-gradient(180deg,#f7eadb_0%,#fbf1e4_60%,#fbf6ec_100%)] pt-28 sm:pt-36">
-        <Blob className="-right-40 top-0 size-[28rem] bg-[#f3b46b]/30" />
-        <Floater kind="kookaburra" className="right-[4%] top-[20%] w-28" distance={60} rotate={5} />
         <div className="relative mx-auto flex max-w-3xl flex-col gap-5 px-4 pb-10 sm:px-6">
           <Link href="/news" className="inline-flex w-fit items-center gap-2 text-sm font-bold text-[#3f6f5c]">
             <ArrowLeft className="size-4" /> All news
@@ -48,7 +46,7 @@ async function PostBody({ params }: { params: Promise<{ slug: string }> }) {
         </div>
         {post.image && (
           <div className="relative mx-auto max-w-4xl px-4 sm:px-6">
-            <div data-reveal data-lightbox={post.image} data-lightbox-alt={post.title} className="tape ink-card relative aspect-[16/9] overflow-hidden rounded-[1.5rem] bg-white">
+            <div data-reveal data-lightbox={post.image} data-lightbox-alt={post.title} className="ink-card relative aspect-[16/9] overflow-hidden rounded-[1.5rem] bg-white">
               <Image src={post.image} alt="" fill priority sizes="(min-width: 1024px) 60vw, 100vw" className="object-cover" />
             </div>
           </div>
@@ -71,7 +69,6 @@ async function PostBody({ params }: { params: Promise<{ slug: string }> }) {
         </div>
       </Section>
 
-      <TourBand animal="cockatoo" />
     </Shell>
   );
 }

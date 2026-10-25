@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ExternalLink } from "lucide-react";
 
-import { Blob, COLORS, display, Floater, PageHero, PrimaryButton, Prose, Section, SectionHeading, Shell } from "@/components/site-chrome";
+import { COLORS, display, PageHero, PrimaryButton, Prose, Section, SectionHeading, Shell } from "@/components/site-chrome";
 import { careers as c, contact } from "@/lib/pages-content";
 
 export const metadata: Metadata = {
@@ -15,8 +15,6 @@ export default function CareersPage() {
       <PageHero eyebrow={c.eyebrow} title={c.title} intro={c.intro} animal="cockatoo" />
 
       <Section bg={COLORS.cream} next={COLORS.sage}>
-        <Blob className="-left-40 top-1/3 size-[28rem] bg-[#9ccbb5]/35" />
-        <Floater kind="emu" className="right-[2%] top-[4%] w-28" distance={70} rotate={3} />
         <SectionHeading eyebrow="Join our team" title="Everything you need, in one place" />
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {c.groups.map((g, i) => (
@@ -26,7 +24,7 @@ export default function CareersPage() {
               <ul className="mt-auto flex flex-col gap-2">
                 {g.links.map((l) => (
                   <li key={l.href}>
-                    <a href={l.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border-2 border-[#1b1714] bg-[#fffdf8] px-4 py-1.5 text-sm font-bold shadow-[2px_2px_0_#1b1714] transition hover:-translate-y-0.5 hover:bg-[#f3b46b]">
+                    <a href={l.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-[#1b1714]/20 bg-[#fffdf8] px-4 py-1.5 text-sm font-bold transition hover:-translate-y-0.5 hover:bg-[#f3b46b]">
                       {l.label} <ExternalLink className="size-3.5" />
                     </a>
                   </li>

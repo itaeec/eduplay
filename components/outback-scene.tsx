@@ -213,7 +213,8 @@ export function WaveDivider({
         d="M0 48 C160 20 320 70 520 44 C720 18 900 60 1100 40 C1300 20 1460 56 1600 36"
         fill="none"
         stroke={INK}
-        strokeWidth="2.5"
+        strokeOpacity="0.18"
+        strokeWidth="1.25"
         vectorEffect="non-scaling-stroke"
       />
     </svg>
