@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Edu-Play Early Learning Centre — website
 
-## Getting Started
+Static Next.js site for [edu-play.com.au](https://edu-play.com.au), built for GitHub Pages.
 
-First, run the development server:
+## Run it locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| What | Where |
+|---|---|
+| Home page | `app/page.tsx` |
+| Inner pages (About, Programs, News, FAQs, Careers, Contact, …) | `app/<route>/page.tsx` |
+| Text content for the inner pages | `lib/pages-content.ts` |
+| Home-page text, nav links, testimonials | `lib/site-content.ts` |
+| Blog posts | `content/posts.json` (one entry per post, `html` is the article body) |
+| Photos | `public/images/` |
+| Animal drawings and the walking parade | `components/ui/australian-animals.ts`, `components/ui/skiper39.tsx` |
+| Bird-flock "Womindjeka" wordmark | `components/ui/murmuration-wordmark.tsx` |
+| Hero landscape, dividers, scroll animations | `components/outback-scene.tsx`, `components/scroll-effects.tsx` |
+| Shared header / footer / page banner | `components/site-chrome.tsx` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploying to GitHub Pages
 
-## Learn More
+1. Push this folder to a GitHub repository (branch `main`).
+2. In the repository: **Settings → Pages → Source: GitHub Actions**.
+3. Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes it.
+   The site is at `https://<username>.github.io/<repo>/` (the workflow sets the sub-folder automatically).
 
-To learn more about Next.js, take a look at the following resources:
+### Custom domain (edu-play.com.au)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Add a file `public/CNAME` containing just `edu-play.com.au`.
+2. In **Settings → Pages → Custom domain** enter `edu-play.com.au` and tick *Enforce HTTPS*.
+3. At your domain registrar, point the domain at GitHub Pages
+   (`A` records `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`,
+   and a `CNAME` for `www` → `<username>.github.io`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Facebook posts
 
-## Deploy on Vercel
+The "Latest from our centre" section shows the page's public posts. They are fetched **at build time**
+by `scripts/fetch-facebook.mjs` (so no Facebook login is needed by visitors) and the workflow rebuilds
+the site every 6 hours to pick up new posts.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To enable it:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Follow the steps in `.env.local.example` to get a Page access token.
+2. In the repository: **Settings → Secrets and variables → Actions → New repository secret**,
+   name `FACEBOOK_PAGE_TOKEN`, paste the token.
+3. Run the workflow once from the **Actions** tab (or push a change).
+
+Without a token the section shows a "Follow us on Facebook" card instead.
+
+Locally, copy `.env.local.example` to `.env.local`, add the token and run `npm run facebook` to refresh
+`public/facebook.json`.

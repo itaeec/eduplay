@@ -1,0 +1,30 @@
+{
+  "widths": [
+    480,
+    960,
+    1440,
+    2000
+  ],
+  "photos": [
+    "front-building",
+    "front-sign",
+    "joeys-blue-wall",
+    "joeys-books",
+    "joeys-easel",
+    "joeys-nature",
+    "joeys-playdough",
+    "kangaroos-home-corner",
+    "kangaroos-main-room",
+    "kangaroos-nature-table",
+    "kangaroos-reading-nook",
+    "kangaroos-rug",
+    "kangaroos-tea-table",
+    "outside-climbing",
+    "outside-sandpit",
+    "outside-tables-swing",
+    "outside-tent-table",
+    "outside-verandah",
+    "outside-yard",
+    "veggies-herbs"
+  ]
+}

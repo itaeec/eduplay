@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated at build time by scripts/fetch-facebook.mjs
+public/facebook.json
+
+# camera originals (605 MB) — web copies are built into public/images by `npm run images`
+/img/
